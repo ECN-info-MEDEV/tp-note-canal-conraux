@@ -12,6 +12,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.params.provider.ValueSource;
 
 /**
  *
@@ -56,15 +57,28 @@ public class PlateauTest {
      */
     @Test
     public void testVerifierDecode() {
-//        System.out.println("verifierDecode");
-//        List decode = Arrays.asList(1, 0, 1, 0);
-//        
-//        Plateau instance = new Plateau();
-//        boolean expResult = false;
-//        boolean result = instance.verifierDecode();
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
+        System.out.println("verifierDecode");
+        List decode = Arrays.asList(1, 0, 1, 0);
+        List code = Arrays.asList(1, 0, 1, 0);
+        
+        Plateau instance = new Plateau();
+        
+        instance.setCode(code);
+        instance.ajouterDecode(decode);
+        
+        boolean expResult = code.equals(decode);
+        boolean result = instance.verifierDecode();
+        
+        // On test s'il check que la tentative est succesfull
+        assertEquals(expResult, result);
+        
+        int resultInt;
+        for (int i = 0; i < 4; i++) {
+            resultInt = instance.getIndicateur().get(0).get(i);
+            if(resultInt==2){
+                assertEquals(decode.get(i),code.get(i));
+            }
+        }
     }
 
 }

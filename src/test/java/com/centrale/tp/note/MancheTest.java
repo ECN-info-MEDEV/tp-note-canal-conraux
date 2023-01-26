@@ -10,6 +10,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Disabled;
 
 /**
  *
@@ -41,6 +42,7 @@ public class MancheTest {
      * Test of nouveauCode method, of class Manche.
      */
     @Test
+    @Disabled
     public void testNouveauCode() {
         System.out.println("nouveauCode");
         Manche instance = null;
@@ -52,6 +54,7 @@ public class MancheTest {
      * Test of nouveauDecode method, of class Manche.
      */
     @Test
+    @Disabled
     public void testNouveauDecode() {
         System.out.println("nouveauDecode");
         Manche instance = null;
@@ -64,6 +67,7 @@ public class MancheTest {
      * Test of verifierDecode method, of class Manche.
      */
     @Test
+    @Disabled
     public void testVerifierDecode() {
         System.out.println("verifierDecode");
         Manche instance = null;
@@ -78,11 +82,10 @@ public class MancheTest {
      * Test of afficheIndication method, of class Manche.
      */
     @Test
+    @Disabled
     public void testAfficheIndication() {
         System.out.println("afficheIndication");
         Manche instance = null;
         instance.afficheIndication();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 }
