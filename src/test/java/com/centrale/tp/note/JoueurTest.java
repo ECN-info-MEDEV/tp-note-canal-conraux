@@ -46,8 +46,6 @@ public class JoueurTest {
         String expResult = "";
         String result = instance.getPseudo();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -56,11 +54,9 @@ public class JoueurTest {
     @Test
     public void testSetPseudo() {
         System.out.println("setPseudo");
-        String m_pseudo = "";
+        String m_pseudo = "Alphonse";
         Joueur instance = new Joueur();
         instance.setPseudo(m_pseudo);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -73,8 +69,6 @@ public class JoueurTest {
         int expResult = 0;
         int result = instance.getScore();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -86,8 +80,6 @@ public class JoueurTest {
         int m_score = 0;
         Joueur instance = new Joueur();
         instance.setScore(m_score);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
     
 }
