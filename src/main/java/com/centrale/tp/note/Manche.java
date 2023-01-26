@@ -70,13 +70,22 @@ public class Manche {
      *  Fonction nouveau code qui va récupérer le nouvea code proposé par le codeur
      */
     public void nouveauCode(){
+        String regex = "[0-5] [0-5] [0-5] [0-5]";
+        String strCode = null;
         Scanner scanner = new Scanner(System.in);
 
         // Affiche "Ecrire un nombre: "
         System.out.print(this.m_codeur.getPseudo() + "    -   Proposez votre code (ex: 1 0 0 1) avec des couleurs de 0 à 5 : ");
 
         // On recupere la proposition
-        String strCode = scanner.nextLine();
+        do{
+            if(strCode!=null){
+                System.out.print("Format invalide, sont attendus :");
+                System.out.print("  4 chiffres de 0 à 5 avec un espaces entre chacun d'eux comme dans l'exemple suivant : 1 0 0 1");
+                System.out.print("Veuillez réessayer :");
+            }
+            strCode = scanner.nextLine();
+        }while(!strCode.matches(regex));
         
         // On split dans un tableau
         String[] arrayCode = strCode.split(" ");
@@ -93,12 +102,20 @@ public class Manche {
      */
     public void nouveauDecode(){
         Scanner scanner = new Scanner(System.in);
-
+        String regex = "[0-5] [0-5] [0-5] [0-5]";
+        String strDecode = null;
         // Affiche "Ecrire un nombre: "
         System.out.print(this.m_decodeur.getPseudo() + "    -   Proposez une tentative (ex: 1 0 0 1) avec des couleurs de 0 à 5 : ");
 
         // On recupere la proposition
-        String strDecode = scanner.nextLine();
+        do{
+            if(strDecode!=null){
+                System.out.println("Format invalide, sont attendus :");
+                System.out.println("  4 chiffres de 0 à 5 avec un espaces entre chacun d'eux comme dans l'exemple suivant : 1 0 0 1");
+                System.out.println("    -   Veuillez réessayer :");
+            }
+            strDecode = scanner.nextLine();
+        }while(!strDecode.matches(regex));
         
         // On split dans un tableau
         String[] arrayDecode = strDecode.split(" ");
