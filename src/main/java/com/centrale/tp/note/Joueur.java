@@ -27,6 +27,14 @@ public class Joueur {
         this.m_pseudo = m_pseudo;
         this.m_score = m_score;
     }
+    
+    /**
+     *  Constructeur
+     */
+    public Joueur() {
+        this.m_pseudo = "";
+        this.m_score = 0;
+    }
 
     /**
      *  
