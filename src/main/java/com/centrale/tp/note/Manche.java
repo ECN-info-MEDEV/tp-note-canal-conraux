@@ -4,6 +4,11 @@
  */
 package com.centrale.tp.note;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
+import java.util.stream.Collectors;
+
 /**
  *
  * @author Canal_Conraux
@@ -34,6 +39,54 @@ public class Manche {
         this.m_plateauManche = m_plateauManche;
     }
 
+    
+    
+    public boolean nouveauTour(){
+        boolean mancheTerminee = false;
+        
+        // On demande une nouvelle proposition de décodage
+        nouveauDecode();
+        
+        // On check si c'est valide
+        mancheTerminee = verifierDecode();
+        
+        if(mancheTerminee){
+            int score = 0; // a Modifier
+            this.m_codeur.setScore(this.m_codeur.getScore() + score);
+        }
+        
+        return true;
+    }
+    
+    public void nouveauDecode(){
+        Scanner scanner = new Scanner(System.in);
+
+        // Affiche "Ecrire un nombre: "
+        System.out.print("Proposez une tentative (ex: 1 0 0 1) : ");
+
+        // On recupere la proposition
+        String strDecode = scanner.nextLine();
+        
+        // On split dans un tableau
+        String[] arrayDecode = strDecode.split("\\s+");
+        
+        // On parse tout le tableau dans une liste
+        List<Integer> listDecode = Arrays.asList(arrayDecode).stream().map(Integer::parseInt).collect(Collectors.toList());
+        
+        // On ajoute cette liste a notre liste de decode
+        this.m_plateauManche.ajouterDecode(listDecode);
+    }
+    
+    public boolean verifierDecode(){
+        
+        return true;
+    }
+    
+    
+            
+            
+            
+            
     /**
      *
      * @return

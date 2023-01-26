@@ -4,6 +4,7 @@
  */
 package com.centrale.tp.note;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,6 +24,12 @@ public class Plateau {
     * Liste des indications
     */
     private List<List<Integer>> m_indicateur;
+    
+    /**
+    * Entier qui décrit ou on en est
+    */
+    private int m_index;
+    
 
     /**
      *
@@ -34,7 +41,24 @@ public class Plateau {
         this.m_code = m_code;
         this.m_decode = m_decode;
         this.m_indicateur = m_indicateur;
+        this.m_index = -1;
     }
+    
+    
+    
+    public void ajouterDecode(List<Integer> decode){
+        this.m_index++;
+        this.m_decode.add(decode);
+    }
+    
+//    public boolean verifierDecode(){
+//        for (int i = 0; i < 4; i++) {
+//            int res = 0;
+//            
+//            // Si bon emplacement res=2
+//            //if(this.m_code.get(i) == )
+//        }
+//    }
 
     /**
      *
@@ -82,6 +106,14 @@ public class Plateau {
      */
     public void setIndicateur(List<List<Integer>> m_indicateur) {
         this.m_indicateur = m_indicateur;
+    }
+
+    public int getIndex() {
+        return m_index;
+    }
+
+    public void setIndex(int m_index) {
+        this.m_index = m_index;
     }
 
     
