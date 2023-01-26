@@ -63,7 +63,7 @@ public class Manche {
         String strCode = scanner.nextLine();
         
         // On split dans un tableau
-        String[] arrayCode = strCode.split("\\s+");
+        String[] arrayCode = strCode.split(" ");
         
         // On parse tout le tableau dans une liste
         List<Integer> listCode = Arrays.asList(arrayCode).stream().map(Integer::parseInt).collect(Collectors.toList());
@@ -82,7 +82,7 @@ public class Manche {
         String strDecode = scanner.nextLine();
         
         // On split dans un tableau
-        String[] arrayDecode = strDecode.split("\\s+");
+        String[] arrayDecode = strDecode.split(" ");
         
         // On parse tout le tableau dans une liste
         List<Integer> listDecode = Arrays.asList(arrayDecode).stream().map(Integer::parseInt).collect(Collectors.toList());
