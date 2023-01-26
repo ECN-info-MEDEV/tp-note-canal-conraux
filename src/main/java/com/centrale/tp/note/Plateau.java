@@ -45,6 +45,16 @@ public class Plateau {
         this.m_index = -1;
     }
     
+    /**
+     *
+     */
+    public Plateau() {
+        this.m_code = new ArrayList<>();
+        this.m_decode = new ArrayList<>();
+        this.m_indicateur = new ArrayList<>();
+        this.m_index = -1;
+    }
+    
     
     
     public void ajouterDecode(List<Integer> decode){
