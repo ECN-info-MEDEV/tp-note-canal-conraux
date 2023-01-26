@@ -79,7 +79,7 @@ public class Plateau {
                 res = 2;
             }
             // Si existe autre part res=1
-            else if(this.m_decode.get(m_index).contains(this.m_code.get(i))){
+            else if(this.m_code.contains(this.m_decode.get(m_index).get(i))){
                 res = 1;
             }
             
