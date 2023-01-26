@@ -11,6 +11,10 @@ package com.centrale.tp.note;
  */
 public class TpNote {
 
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         System.out.println("Hello World!");
     }
