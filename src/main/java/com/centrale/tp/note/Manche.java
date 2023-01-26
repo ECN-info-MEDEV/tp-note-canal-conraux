@@ -42,7 +42,7 @@ public class Manche {
     
     
     public boolean nouveauTour(){
-        boolean mancheTerminee = false;
+        boolean mancheTerminee;
         
         // On demande une nouvelle proposition de décodage
         nouveauDecode();
@@ -50,19 +50,33 @@ public class Manche {
         // On check si c'est valide
         mancheTerminee = verifierDecode();
         
-        if(mancheTerminee){
-            int score = 0; // a Modifier
-            this.m_codeur.setScore(this.m_codeur.getScore() + score);
-        }
+        return mancheTerminee;
+    }
+    
+    public void nouveauCode(){
+        Scanner scanner = new Scanner(System.in);
+
+        // Affiche "Ecrire un nombre: "
+        System.out.print("Proposez votre code (ex: 1 0 0 1) avec des couleurs de 0 à 5 : ");
+
+        // On recupere la proposition
+        String strCode = scanner.nextLine();
         
-        return true;
+        // On split dans un tableau
+        String[] arrayCode = strCode.split("\\s+");
+        
+        // On parse tout le tableau dans une liste
+        List<Integer> listCode = Arrays.asList(arrayCode).stream().map(Integer::parseInt).collect(Collectors.toList());
+        
+        // On ajoute cette liste a notre liste de decode
+        this.m_plateauManche.setCode(listCode);
     }
     
     public void nouveauDecode(){
         Scanner scanner = new Scanner(System.in);
 
         // Affiche "Ecrire un nombre: "
-        System.out.print("Proposez une tentative (ex: 1 0 0 1) : ");
+        System.out.print("Proposez une tentative (ex: 1 0 0 1) avec des couleurs de 0 à 5 : ");
 
         // On recupere la proposition
         String strDecode = scanner.nextLine();
@@ -78,8 +92,7 @@ public class Manche {
     }
     
     public boolean verifierDecode(){
-        
-        return true;
+        return this.m_plateauManche.verifierDecode();
     }
     
     

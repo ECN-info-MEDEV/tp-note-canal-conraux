@@ -6,6 +6,7 @@ package com.centrale.tp.note;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  *
@@ -51,14 +52,32 @@ public class Plateau {
         this.m_decode.add(decode);
     }
     
-//    public boolean verifierDecode(){
-//        for (int i = 0; i < 4; i++) {
-//            int res = 0;
-//            
-//            // Si bon emplacement res=2
-//            //if(this.m_code.get(i) == )
-//        }
-//    }
+    public boolean verifierDecode(){
+        int resFinal = 0;  
+        List<Integer> indications = new ArrayList<>();
+        for (int i = 0; i < 4; i++) {
+            int res = 0;
+            
+            // Si bon emplacement res=2
+            if(Objects.equals(this.m_code.get(i), this.m_decode.get(m_index).get(i))){
+                res = 2;
+            }
+            // Si existe autre part res=1
+            else if(this.m_decode.get(m_index).contains(this.m_code.get(i))){
+                res = 1;
+            }
+            
+            // On ajoute dans l'indication
+            indications.add(res);
+            
+            
+            resFinal += res;
+        }
+        // On ajoute dans l'indicateur de manche
+        this.m_indicateur.add(indications);
+        // Si resFinal == 8 alors la manche est finie
+        return (resFinal==8);
+    }
 
     /**
      *
