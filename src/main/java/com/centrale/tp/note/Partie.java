@@ -4,36 +4,126 @@
  */
 package com.centrale.tp.note;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * Classe Partie qui définit le déroulement d'une partie
+ *
  * @author Canal_Conraux
  */
 public class Partie {
+
     /**
-    * Entier qui définit le nombre de manches
-    */
+     * Entier qui définit le nombre de manches
+     */
     private int m_nbManche;
     /**
-    * Liste des différentes manches
-    */
+     * Liste des différentes manches
+     */
     private List<Manche> m_manches;
     /**
-    * Liste des deux joueurs participant a la partie
-    */
-    private List<Joueur> m_joueurs;
+     * Permier joueur participant à la partie
+     */
+    private Joueur m_joueurA;
+    /**
+     * Deuxième joueur participant à la partie
+     */
+    private Joueur m_joueurB;
+    /**
+     * Indique si la partie est finie ou non
+     */
+    private boolean m_over;
+
+    /**
+     *
+     * @return
+     */
+    public int getM_nbManche() {
+        return m_nbManche;
+    }
 
     /**
      *
      * @param m_nbManche
-     * @param m_manches
-     * @param m_joueurs
      */
-    public Partie(int m_nbManche, List<Manche> m_manches, List<Joueur> m_joueurs) {
+    public void setM_nbManche(int m_nbManche) {
         this.m_nbManche = m_nbManche;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public List<Manche> getM_manches() {
+        return m_manches;
+    }
+
+    /**
+     *
+     * @param m_manches
+     */
+    public void setM_manches(List<Manche> m_manches) {
         this.m_manches = m_manches;
-        this.m_joueurs = m_joueurs;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public Joueur getM_joueurA() {
+        return m_joueurA;
+    }
+
+    /**
+     *
+     * @param m_joueurA
+     */
+    public void setM_joueurA(Joueur m_joueurA) {
+        this.m_joueurA = m_joueurA;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public Joueur getM_joueurB() {
+        return m_joueurB;
+    }
+
+    /**
+     *
+     * @param m_joueurB
+     */
+    public void setM_joueurB(Joueur m_joueurB) {
+        this.m_joueurB = m_joueurB;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public boolean isM_over() {
+        return m_over;
+    }
+
+    /**
+     *
+     * @param m_over
+     */
+    public void setM_over(boolean m_over) {
+        this.m_over = m_over;
+    }
+
+    /**
+     * Constructeur de la partie
+     */
+    public Partie() {
+        m_nbManche = 0;
+        m_manches = new ArrayList();
+        m_joueurA = new Joueur();
+        m_joueurB = new Joueur();
     }
 
     /**
@@ -69,22 +159,72 @@ public class Partie {
     }
 
     /**
-     *
-     * @return
+     * Fonction qui demande aux deux joueurs tour à tour si ils veulent arrêter la partie. Si ils le souhaitent
+     * tous les deux, le paramètre m_over est passé à true.
      */
-    public List<Joueur> getJoueurs() {
-        return m_joueurs;
+    public void askIfPartieOver() {
+        boolean responseOk = false;
+        while (!responseOk) {
+            System.out.println("Joueur A, souhaitez-vous arrêter la partie (taper 1 pour Oui et 2 pour Non) ?");
+            Scanner sc = new Scanner(System.in);
+            int choix = 0;
+            try {
+                choix = sc.nextInt();
+            } catch (Exception e) {
+                System.out.println("Il faut entrer une entier");
+            }
+            if (choix == 1) {
+                //Si c'est bon, on propose au joueur 2
+                boolean responseOk2 = false;
+                while (!responseOk2) {
+                    System.out.println("Joueur B, souhaitez-vous arrêter la partie (taper 1 pour Oui et 2 pour Non) ?");
+                    sc = new Scanner(System.in);
+                    choix = 0;
+                    try {
+                        choix = sc.nextInt();
+                    } catch (Exception e) {
+                        System.out.println("Il faut entrer une entier");
+                    }
+                    if (choix == 1) {
+                        //Si c'est bon, on propose au joueur 2
+                        System.out.println("La partie s'arrête donc maintenant.");
+                        setM_over(true);
+                        responseOk2 = true;
+                    } else if (choix == 2) {
+                        //La partie continue
+                        System.out.println("La partie continue donc.");
+                        responseOk2 = true;
+                    } else {
+                        System.out.println("L'entier entré n'est pas valide");
+                    }
+                }
+                responseOk = true;
+            } else if (choix == 2) {
+                //La partie continue
+                System.out.println("La partie continue donc.");
+                responseOk = true;
+            } else {
+                System.out.println("L'entier entré n'est pas valide");
+            }
+        }
     }
-
+    
     /**
-     *
-     * @param m_joueurs
+     * Cette fonction affiche dans le terminal le gagnant dans le cas où il y en a un, elle annonce un match nul sinon.
      */
-    public void setJoueurs(List<Joueur> m_joueurs) {
-        this.m_joueurs = m_joueurs;
+    public void printWinner() {
+        if (m_joueurA.getScore() < m_joueurB.getScore()) {
+            System.out.println("Le joueur B a gagné.");
+            System.out.println("Félicitations à lui !");
+        }
+        else if (m_joueurA.getScore() > m_joueurB.getScore()) {
+            System.out.println("Le joueur A a gagné.");
+            System.out.println("Félicitations à lui !");
+        }
+        else {
+            System.out.println("La partie se termine donc sur un match nul.");
+            System.out.println("Félicitations à tous les deux.");
+        }
     }
 
-   
-    
-    
 }
