@@ -157,6 +157,37 @@ public class Partie {
     public void setManches(List<Manche> m_manches) {
         this.m_manches = m_manches;
     }
+    
+    /**
+     * Cette fonction joue une manche avec un codeur et un décodeur
+     * @param codeur
+     * @param decodeur
+     */
+    public void playManche(Joueur codeur, Joueur decodeur) {
+        
+        //On crée une manche
+        Manche m = new Manche(codeur, decodeur, new Plateau());
+        
+        //On demande au codeur le code qu'il souhaite mettre en place
+        m.nouveauCode();
+        
+        //On lance la recherche du décodeur jusqu'à ce qu'il trouve le bon code OU que 12 tours se soient passés
+        while(!m.nouveauTour()  && (m.getPlateauManche().getIndex() < 12)) {
+        }
+        
+        //Si on est sortis de la boucle et qu'on a pas dépassé le  douzième tour
+        if (m.getPlateauManche().getIndex() < 12) {
+            //On rajoute le nombre de tours en points au codeur
+            codeur.setScore(codeur.getScore() + (m.getPlateauManche().getIndex() + 1));
+        }
+        //Si on dépasse 12 tours, on met un max de points parce que le codeur est un boss
+        else {
+            codeur.setScore(codeur.getScore() + 15);
+        }
+        
+        m_manches.add(m);
+        
+    }
 
     /**
      * Fonction qui demande aux deux joueurs tour à tour si ils veulent arrêter la partie. Si ils le souhaitent

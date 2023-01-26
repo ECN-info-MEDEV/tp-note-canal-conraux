@@ -40,8 +40,8 @@ public class TpNote {
         while (!partie.isM_over()) {
 
             //LES DEUX MANCHES SONT JOUEES
-            //Ajouter une manche avec joueur A en codeur
-            //Ajouter une manche avec joueur B en codeur
+            partie.playManche(partie.getM_joueurA(), partie.getM_joueurB());
+            partie.playManche(partie.getM_joueurB(), partie.getM_joueurA());
             
             //DEMONSTRATION DES SCORES
             System.out.println("");
