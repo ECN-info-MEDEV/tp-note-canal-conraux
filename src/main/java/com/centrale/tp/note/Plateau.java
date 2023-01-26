@@ -82,6 +82,7 @@ public class Plateau {
             else if(this.m_code.contains(this.m_decode.get(m_index).get(i))){
                 res = 1;
             }
+            // sinon res=0
             
             // On ajoute dans l'indication
             indications.add(res);
