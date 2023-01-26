@@ -168,6 +168,12 @@ public class Partie {
         //On crée une manche
         Manche m = new Manche(codeur, decodeur, new Plateau());
         
+        System.out.println("");
+        System.out.println("Commençons le tour !");
+        
+        System.out.println("Codeur : " + m.getCodeur().getPseudo() + "    Décodeur : " + m.getDecodeur().getPseudo());
+        System.out.println("----------------------");
+        
         //On demande au codeur le code qu'il souhaite mettre en place
         m.nouveauCode();
         

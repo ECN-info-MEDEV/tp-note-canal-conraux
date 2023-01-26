@@ -33,7 +33,7 @@ public class Plateau {
     
 
     /**
-     *
+     *  Constructeur plateau avec 3 paramètres
      * @param m_code
      * @param m_decode
      * @param m_indicateur
@@ -46,7 +46,7 @@ public class Plateau {
     }
     
     /**
-     *
+     *  Constructeur plateau par défault
      */
     public Plateau() {
         this.m_code = new ArrayList<>();
@@ -55,13 +55,19 @@ public class Plateau {
         this.m_index = -1;
     }
     
-    
-    
+    /**
+     * Méthode qui ajoute une nouvelle tentative de décode à la liste
+     * @param decode
+     */
     public void ajouterDecode(List<Integer> decode){
         this.m_index++;
         this.m_decode.add(decode);
     }
     
+    /**
+     *  Méthode qui vérifie si le code et decode est semblable
+     * @return retourne true s'ils sont similaires
+     */
     public boolean verifierDecode(){
         int resFinal = 0;  
         List<Integer> indications = new ArrayList<>();
@@ -88,6 +94,8 @@ public class Plateau {
         // Si resFinal == 8 alors la manche est finie
         return (resFinal==8);
     }
+    
+    
 
     /**
      *
@@ -137,10 +145,18 @@ public class Plateau {
         this.m_indicateur = m_indicateur;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getIndex() {
         return m_index;
     }
 
+    /**
+     *
+     * @param m_index
+     */
     public void setIndex(int m_index) {
         this.m_index = m_index;
     }
